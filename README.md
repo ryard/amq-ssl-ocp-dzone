@@ -6,7 +6,7 @@
 ```
 2 - Create two secrets, one to store the certificate and the second to store the broker credentials.
 ```
-$ oc create secret generic amq-credential-secret --from-literal username=admin --from-literal password=admin --from-literal  amq_truststore_password=amqbroker123 --from-literal amq_keystore_password=amqbroker123
+$ oc create secret generic amq-credential-secret --from-literal username=admin --from-literal password=admin --from-literal  amq_truststore_password=<password_typed_to_create_certs> --from-literal amq_keystore_password=<password_typed_to_create_certs>
 
 $ oc create secret generic ${BROKER_NAME}-app-secret --from-file=broker.ks --from-file=broker.ts -n ${MYPROJECT}
 ```
@@ -19,9 +19,8 @@ $ oc create -f https://raw.githubusercontent.com/rafamqrs/amq-ssl-ocp-dzone/main
 $ oc new-app --name amq-dev-broker-74-ssl --template=amq-broker-74-ssl \
 -p AMQ_NAME=amq-dev -p APPLICATION_NAME=amq-broker \
 -p AMQ_PROTOCOL="openwire,amqp,stomp,mqtt,hornetq" \ 
--p AMQ_QUEUES="dzone.movies.queue" -p AMQ_USER=admin \ 
+-p AMQ_QUEUES=<queue_name> -p AMQ_USER=admin \ 
 -p AMQ_PASSWORD=dzone123 -p AMQ_SECRET=amq-dev-app-secret \  
 -p AMQ_TRUSTSTORE=broker.ts -p AMQ_KEYSTORE=broker.ks \
 -p AMQ_REQUIRE_LOGIN=true \ 
--p AMQ_TRUSTSTORE_PASSWORD=amqbroker123 -p AMQ_KEYSTORE_PASSWORD=amqbroker123
 ```
