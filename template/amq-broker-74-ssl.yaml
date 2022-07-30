@@ -246,7 +246,7 @@ objects:
                   },
                   {
                     "name": "AMQ_REPLICAS",
-                    "value": ${AMQ_REPLICAS}
+                    "value": "${AMQ_REPLICAS}"
                   },
                   {
                     "name": "AMQ_CLUSTER_USER",
@@ -546,7 +546,7 @@ parameters:
 - description: Number of broker replicas for a cluster
   displayName: Number of Replicas
   name: AMQ_REPLICAS
-  value: '0'
+  value: 0
 - description: Clustered user It serves as a key by which the real cluster user name is retrieved from kubernetes secret object.
   displayName: cluster user
   from: user[a-zA-Z0-9]{3}
