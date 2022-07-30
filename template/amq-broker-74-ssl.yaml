@@ -40,7 +40,7 @@ objects:
     name: ${APPLICATION_NAME}-service-account
     labels:
       app: ${APPLICATION_NAME}
-- apiVersion: rbac.authorization.k8s.io/v1beta1
+- apiVersion: rbac.authorization.k8s.io/v1
   kind: Role
   metadata:
     name: ${APPLICATION_NAME}-role
@@ -67,7 +67,7 @@ objects:
     verbs:
     - get
     - list
-- apiVersion: rbac.authorization.k8s.io/v1beta1
+- apiVersion: rbac.authorization.k8s.io/v1
   kind: RoleBinding
   metadata:
     name: ${APPLICATION_NAME}-role-binding
@@ -152,7 +152,7 @@ objects:
         port: 8888
     selector:
       deploymentConfig: ${APPLICATION_NAME}-amq      
-- apiVersion: apps/v1beta1
+- apiVersion: apps/v1
   kind: StatefulSet
   metadata:
     labels:
